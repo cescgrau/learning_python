@@ -15,7 +15,9 @@ def is_number_five_into_the_number(a_number):
 def map_from_integer_contains_three_or_five_to_fizz_or_buzz(a_number):
     if is_number_three_into_the_number(a_number):
         return "fizz"
-
+    if is_number_five_into_the_number(a_number):
+        return "buzz"
+    return str(a_number)
 
 
 class TestFizzBuzzExtended(unittest.TestCase):
@@ -61,9 +63,10 @@ class TestFizzBuzzExtended(unittest.TestCase):
         self.assertFalse(is_number_five_into_the_number(44))
 
     def test_an_integer_has_three_inside_print_fizz(self):
-        self.assertEqual("fizz" ,map_from_integer_contains_three_or_five_to_fizz_or_buzz(34))
+        self.assertEqual("fizz", map_from_integer_contains_three_or_five_to_fizz_or_buzz(34))
 
-
+    def test_an_integer_has_five_inside_print_buzz(self):
+        self.assertEqual("buzz", map_from_integer_contains_three_or_five_to_fizz_or_buzz(35))
 
 
 if __name__ == '__main__':
