@@ -1,9 +1,4 @@
-def is_multiple_of_five(a_number):
-    return (a_number % 5) == 0
-
-
-def is_multiple_of_three(a_number):
-    return (a_number % 3) == 0
+from domain.fizz_buzz.tools import is_multiple_of_five, is_multiple_of_three
 
 
 def map_from_integer_to_fizz_or_buzz(a_number):

@@ -1,7 +1,7 @@
 import unittest
 
-from domain.fizz_buzz.extended import map_from_integer_contains_three_to_fizz, map_from_integer_contains_five_to_buzz, \
-    map_from_integer_to_fizz_and_buzz_extended, map_fizz_buzz_multiple_and_with_threes_and_fives_for_a_range
+from domain.fizz_buzz.extended import map_from_integer_to_fizz_and_buzz_extended, \
+    map_fizz_buzz_multiple_and_with_threes_and_fives_for_a_range
 
 
 class TestFizzBuzzExtended(unittest.TestCase):
@@ -11,10 +11,10 @@ class TestFizzBuzzExtended(unittest.TestCase):
                          map_fizz_buzz_multiple_and_with_threes_and_fives_for_a_range(start=3, end=5))
 
     def test_an_integer_has_three_inside_print_fizz(self):
-        self.assertEqual("fizz", map_from_integer_contains_three_to_fizz(35))
+        self.assertEqual("fizz", map_from_integer_to_fizz_and_buzz_extended(13))
 
     def test_an_integer_has_five_inside_print_buzz(self):
-        self.assertEqual("buzz", map_from_integer_contains_five_to_buzz(35))
+        self.assertEqual("buzz", map_from_integer_to_fizz_and_buzz_extended(52))
 
     def test_an_integer_has_three_and_five_inside_and_is_multiple_of_five_print_fizzbuzzbuzz(self):
         self.assertEqual("fizzbuzzbuzz", map_from_integer_to_fizz_and_buzz_extended(35))

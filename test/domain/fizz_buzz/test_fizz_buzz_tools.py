@@ -1,7 +1,7 @@
 import unittest
 
-from domain.fizz_buzz.basic import is_multiple_of_five, is_multiple_of_three
-from domain.fizz_buzz.extended import is_number_five_into_the_number, is_number_three_into_the_number
+from domain.fizz_buzz.tools import is_multiple_of_five, is_multiple_of_three, is_number_three_into_the_number, \
+    is_number_five_into_the_number
 
 
 class TestFizzBuzzTools(unittest.TestCase):

@@ -1,4 +1,5 @@
-from domain.fizz_buzz.basic import is_multiple_of_five, is_multiple_of_three
+from domain.fizz_buzz.tools import is_multiple_of_five, is_multiple_of_three, is_number_three_into_the_number, \
+    is_number_five_into_the_number
 
 
 def map_from_integer_to_fizz_and_buzz_extended(a_number):
@@ -22,20 +23,3 @@ def map_fizz_buzz_multiple_and_with_threes_and_fives_for_a_range(start, end):
     return list_result
 
 
-def is_number_three_into_the_number(a_number):
-    return "3" in str(a_number)
-
-
-def is_number_five_into_the_number(a_number):
-    return "5" in str(a_number)
-
-
-def map_from_integer_contains_three_to_fizz(a_number):
-    if is_number_three_into_the_number(a_number):
-        return "fizz"
-
-
-def map_from_integer_contains_five_to_buzz(a_number):
-    if is_number_five_into_the_number(a_number):
-        return "buzz"
-    return str(a_number)
