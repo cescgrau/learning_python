@@ -7,15 +7,13 @@ def is_multiple_of_three(a_number):
 
 
 def map_from_integer_to_fizz_or_buzz(a_number):
-    accumulated_result = str(a_number)
+    accumulated_result = ""
     if is_multiple_of_three(a_number):
         accumulated_result = "fizz"
-        if is_multiple_of_five(a_number):
-            accumulated_result = accumulated_result + "buzz"
     if is_multiple_of_five(a_number):
-        accumulated_result = "buzz"
-        if is_multiple_of_three(a_number):
-            accumulated_result = "fizz" + accumulated_result
+        accumulated_result += "buzz"
+    if not is_multiple_of_three(a_number) and not is_multiple_of_five(a_number):
+        accumulated_result = str(a_number)
     return accumulated_result
 
 
