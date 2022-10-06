@@ -1,6 +1,6 @@
 import unittest
 
-from domain.fizz_buzz.fizz_buzz import is_multiple_of_five, is_multiple_of_three, map_from_integer_to_fizz_or_buzz, \
+from domain.fizz_buzz.basic import is_multiple_of_five, is_multiple_of_three, map_from_integer_to_fizz_or_buzz, \
     map_fizz_buzz_number_for_a_range
 
 
