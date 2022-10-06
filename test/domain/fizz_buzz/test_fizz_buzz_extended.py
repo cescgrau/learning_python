@@ -33,5 +33,6 @@ class TestFizzBuzzExtended(unittest.TestCase):
     def test_an_integer_without_three_or_five_and_is_multiple_of_five_print_buzz(self):
         self.assertEqual("buzz", map_from_integer_to_fizz_and_buzz_extended(100))
 
+
 if __name__ == '__main__':
     unittest.main()
