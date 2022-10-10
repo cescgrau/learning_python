@@ -1,11 +1,19 @@
 import unittest
 
 
+def is_sequential_in_the_string_beginning(a_string_with_numbers: str):
+    delimiter = ""
+    if a_string_with_numbers[1:2] == "//" and a_string_with_numbers[4:5] == "\n":
+        delimiter = str(a_string_with_numbers[3])
+        a_string_with_numbers = str(a_string_with_numbers[5:])
+    pass
+
+
 def add(a_string_with_numbers: str) -> int:
     result = 0
     last_item_was_a_separator = ""
     for item in a_string_with_numbers:
-        separators = [",", "\n", is_sequential_in_the_string_beginning(a_string_with_numbers)]
+        separators = [",", "\n", delimiter]
         is_separator = True if item in separators else False
         if not is_separator:
             result += int(item)
@@ -13,13 +21,6 @@ def add(a_string_with_numbers: str) -> int:
             raise ValueError()
         last_item_was_a_separator = is_separator
     return result
-
-
-def is_sequential_in_the_string_beginning(a_string_with_numbers: str):
-    delimiter = ""
-    if a_string_with_numbers[1:2] == "//" and a_string_with_numbers[4:5] == "\n":
-        delimiter = str(a_string_with_numbers[3])
-    return delimiter
 
 
 class TestStringCalculator(unittest.TestCase):
