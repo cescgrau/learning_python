@@ -5,7 +5,7 @@ def add(a_string_with_numbers: str) -> int:
     result = 0
     last_item_was_a_separator = ""
     for item in a_string_with_numbers:
-        separators = [",", "\n"]
+        separators = [",", "\n", is_sequential_in_the_string_beginning(a_string_with_numbers)]
         is_separator = True if item in separators else False
         if not is_separator:
             result += int(item)
@@ -13,6 +13,13 @@ def add(a_string_with_numbers: str) -> int:
             raise ValueError()
         last_item_was_a_separator = is_separator
     return result
+
+
+def is_sequential_in_the_string_beginning(a_string_with_numbers: str):
+    delimiter = ""
+    if a_string_with_numbers[1:2] == "//" and a_string_with_numbers[4:5] == "\n":
+        delimiter = str(a_string_with_numbers[3])
+    return delimiter
 
 
 class TestStringCalculator(unittest.TestCase):
@@ -39,7 +46,11 @@ class TestStringCalculator(unittest.TestCase):
         with self.assertRaises(ValueError):
             add("8,\n8")
 
+    def test_string_first_positions_contains_sequential_to_define_delimiter(self):
+        self.assertTrue(";", is_sequential_in_the_string_beginning("//;\n"))
 
+    def test_string_with_delimiter_specification_add_numbers(self):
+        self.assertEqual(5, add("//;\n2;3"))
 
-if __name__ == '__main__':
-    unittest.main()
+        if __name__ == '__main__':
+            unittest.main()
