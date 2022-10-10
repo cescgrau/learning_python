@@ -1,11 +1,11 @@
-from domain.fizz_buzz.tools import is_multiple_of, is_number_a_into
+from domain.fizz_buzz.tools import is_multiple_of, is_character_into
 
 
 def map_from_integer_to_fizz_and_buzz_extended(a_number):
     accumulated_result = ""
     if is_character_into(character="3", a_number=a_number):
         accumulated_result += "fizz"
-    if is_number_a_into(character="5", a_number=a_number):
+    if is_character_into(character="5", a_number=a_number):
         accumulated_result += "buzz"
     if is_multiple_of(multiple=5, a_number=a_number):
         accumulated_result += "buzz"

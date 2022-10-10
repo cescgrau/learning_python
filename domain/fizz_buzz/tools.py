@@ -1,21 +1,5 @@
-def is_multiple_of_five(a_number):
-    return (a_number % 5) == 0
-
-
-def is_multiple_of_three(a_number):
-    return (a_number % 3) == 0
-
-
 def is_multiple_of(multiple, a_number):
-    return (a_number % multiple) == 0
-
-
-def is_number_three_into_the_number(a_number):
-    return "3" in str(a_number)
-
-
-def is_number_five_into_the_number(a_number):
-    return "5" in str(a_number)
+    return a_number % multiple == 0
 
 
 def map_fizz_buzz_for_a_range(start, end, function_chossed):
@@ -25,5 +9,5 @@ def map_fizz_buzz_for_a_range(start, end, function_chossed):
     return list_result
 
 
-def is_number_a_into(character, a_number):
+def is_character_into(character, a_number):
     return character in str(a_number)
