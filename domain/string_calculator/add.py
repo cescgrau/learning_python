@@ -19,6 +19,6 @@ def add_internal(a_string_with_numbers: str, separators: Optional[List[str]] = N
 
 def add(an_input: str) -> int:
     if has_separator_specification(an_input):
-        return add_internal(an_input[5:], [extract_separator(an_input)])
+        return add_internal(an_input[4:], [extract_separator(an_input)])
     else:
         return add_internal(an_input)
