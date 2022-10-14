@@ -1,19 +1,4 @@
-def is_multiple_of(a_integer: int, divider: int) -> int:
-    return a_integer % divider == 0
-
-
-def replacing_multiple_of(start, end):
-    list_of_integers = []
-    for an_integer in range(start, end):
-        result = ""
-        if is_multiple_of(an_integer, divider=3):
-            result += "fizz"
-        if is_multiple_of(an_integer, 5):
-            result += "buzz"
-        if not is_multiple_of(an_integer, divider=3) and not is_multiple_of(an_integer, divider=5):
-            result = an_integer
-        list_of_integers.append(result)
-    return list_of_integers
+from domain.fizz_buzz_revisited.fizz_buzz_tools_revisited import replacing_multiple_of
 
 
 def replacing_integers(start, end):

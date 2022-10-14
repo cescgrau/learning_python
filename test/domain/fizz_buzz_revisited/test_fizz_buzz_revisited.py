@@ -1,7 +1,8 @@
 import unittest
 
-from domain.fizz_buzz_revisited.fizz_buzz_revisited import is_multiple_of, replacing_multiple_of, replacing_integers
-from domain.fizz_buzz_revisited.fizz_buzz_tools_revisited import a_returning_a_list_of_integers
+from domain.fizz_buzz_revisited.fizz_buzz_revisited import replacing_integers
+from domain.fizz_buzz_revisited.fizz_buzz_tools_revisited import a_returning_a_list_of_integers, replacing_multiple_of, \
+    is_multiple_of
 
 
 class TestFizzBuzz(unittest.TestCase):
