@@ -4,6 +4,8 @@ from domain.mars_rover.grid_limits import GridLimits
 
 class Rover:
     def __init__(self, x_position: int, y_position: int, direction_view: Direction, limits: GridLimits):
+        if limits is None:
+            raise ValueError("Limits is None")
         self.limits = limits
         self.direction_view = direction_view
         self.x_position = x_position
