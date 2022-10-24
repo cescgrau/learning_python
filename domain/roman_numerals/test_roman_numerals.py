@@ -1,7 +1,6 @@
 def romans_mapping(an_integer: str):
     translation = ""
-    number_of_characters = length_of_numeral(an_integer)
-    last_character_of_string = number_of_characters - 1
+    last_character_of_string, number_of_characters = position_character(an_integer)
     for index in range(number_of_characters):
         if index == 0:
             if an_integer[last_character_of_string - index] == "1":
@@ -69,6 +68,12 @@ def romans_mapping(an_integer: str):
                 translation = "MMM" + translation
         translation = translation
     return translation
+
+
+def position_character(an_integer):
+    number_of_characters = length_of_numeral(an_integer)
+    last_character_of_string = number_of_characters - 1
+    return last_character_of_string, number_of_characters
 
 
 def length_of_numeral(an_integer: str):
