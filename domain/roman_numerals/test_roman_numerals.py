@@ -1,85 +1,50 @@
 def romans_mapping(an_integer: str):
     translation = ""
-    last_character_of_string, number_of_characters = position_character(an_integer)
-    for index in range(number_of_characters):
-        if index == 0:
-            if an_integer[last_character_of_string - index] == "1":
-                translation = "I"
-            elif an_integer[last_character_of_string - index] == "2":
-                translation = "II"
-            elif an_integer[last_character_of_string - index] == "3":
-                translation = "III"
-            elif an_integer[last_character_of_string - index] == "4":
-                translation = "IV"
-            elif an_integer[last_character_of_string - index] == "5":
-                translation = "V"
-            elif an_integer[last_character_of_string - index] == "6":
-                translation = "VI"
-            elif an_integer[last_character_of_string - index] == "7":
-                translation = "VII"
-            elif an_integer[last_character_of_string - index] == "8":
-                translation = "VIII"
-            elif an_integer[last_character_of_string - index] == "9":
-                translation = "IX"
-        if index == 1:
-            if an_integer[last_character_of_string - index] == "1":
-                translation = "X" + translation
-            elif an_integer[last_character_of_string - index] == "2":
-                translation = "XX" + translation
-            elif an_integer[last_character_of_string - index] == "3":
-                translation = "XXX" + translation
-            elif an_integer[last_character_of_string - index] == "4":
-                translation = "XL" + translation
-            elif an_integer[last_character_of_string - index] == "5":
-                translation = "L" + translation
-            elif an_integer[last_character_of_string - index] == "6":
-                translation = "LX" + translation
-            elif an_integer[last_character_of_string - index] == "7":
-                translation = "LXX" + translation
-            elif an_integer[last_character_of_string - index] == "8":
-                translation = "LXXX" + translation
-            elif an_integer[last_character_of_string - index] == "9":
-                translation = "XC" + translation
-        if index == 2:
-            if an_integer[last_character_of_string - index] == "1":
-                translation = "C" + translation
-            elif an_integer[last_character_of_string - index] == "2":
-                translation = "CC" + translation
-            elif an_integer[last_character_of_string - index] == "3":
-                translation = "CCC" + translation
-            elif an_integer[last_character_of_string - index] == "4":
-                translation = "CD" + translation
-            elif an_integer[last_character_of_string - index] == "5":
-                translation = "D" + translation
-            elif an_integer[last_character_of_string - index] == "6":
-                translation = "DC" + translation
-            elif an_integer[last_character_of_string - index] == "7":
-                translation = "DCC" + translation
-            elif an_integer[last_character_of_string - index] == "8":
-                translation = "DCCC" + translation
-            elif an_integer[last_character_of_string - index] == "9":
-                translation = "CM" + translation
-        if index == 3:
-            if an_integer[last_character_of_string - index] == "1":
-                translation = "M" + translation
-            if an_integer[last_character_of_string - index] == "2":
-                translation = "MM" + translation
-            if an_integer[last_character_of_string - index] == "3":
-                translation = "MMM" + translation
-        translation = translation
+    mapping = {
+        0: {
+            "0": "",
+            "1": "I",
+            "2": "II",
+            "3": "III",
+            "4": "IV",
+            "5": "V",
+            "6": "VI",
+            "7": "VII",
+            "8": "VIII",
+            "9": "IX"
+        },
+        1: {
+            "0": "",
+            "1": "X",
+            "2": "XX",
+            "3": "XXX",
+            "4": "XL",
+            "5": "L",
+            "6": "LX",
+            "7": "LXX",
+            "8": "LXXX",
+            "9": "XC"
+        },
+        2: {
+            "0": "",
+            "1": "C",
+            "2": "CC",
+            "3": "CCC",
+            "4": "CD",
+            "5": "D",
+            "6": "DC",
+            "7": "DCC",
+            "8": "DCCC",
+            "9": "CM"
+        },
+        3: {
+            "1": "M",
+            "2": "MM",
+            "3": "MMM"
+        }}
+    number_of_characters = len(an_integer)
+    an_integer_reversed = an_integer[::-1]
+    for index in range(0, number_of_characters):
+        current_character = an_integer_reversed[index]
+        translation = mapping[index][current_character] + translation
     return translation
-
-
-def position_character(an_integer):
-    number_of_characters = length_of_numeral(an_integer)
-    last_character_of_string = number_of_characters - 1
-    return last_character_of_string, number_of_characters
-
-
-def length_of_numeral(an_integer: str):
-    return len(an_integer)
-
-
-def translate_numeral(an_integer: str) -> str:
-    result = romans_mapping(an_integer)
-    return result
