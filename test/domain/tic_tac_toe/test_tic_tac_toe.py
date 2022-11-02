@@ -1,4 +1,5 @@
 import unittest
+from enum import Enum
 from typing import Union, List, Optional, Tuple
 
 PlayerId = str
@@ -7,6 +8,12 @@ Cell = Union[None, PlayerId]
 
 def build_default_tableau() -> List[List[Cell]]:
     return [[None, None, None], [None, None, None], [None, None, None]]
+
+
+class GameStage(Enum):
+    PLAYER_X_TURN = 1
+    PLAYER_Y_TURN = 2
+    GAME_OVER = 3
 
 
 class Tableau:
@@ -87,6 +94,7 @@ def player_shot(tableau: Tableau, player, row, column) -> Tableau:
     return tableau
 
 
+
 def player_in_action(tableau: Tableau, player: PlayerId, column, row):
     if player == "player_x":
         if tableau.contents[row][column] is None:
@@ -94,6 +102,19 @@ def player_in_action(tableau: Tableau, player: PlayerId, column, row):
     if player == "player_y":
         if tableau.contents[row][column] is None:
             tableau.contents[row][column] = "Y"
+    return tableau
+
+
+def game_evolution(tableau: Tableau, player, row, column):
+    stage: GameStage = GameStage.PLAYER_X_TURN
+    while stage != GameStage.GAME_OVER:
+        player_shot(tableau, player, row, column)
+        if review_tableau(tableau) is None and stage == GameStage.PLAYER_X_TURN:
+            stage = GameStage.PLAYER_Y_TURN
+        elif review_tableau(tableau) is None and stage == GameStage.PLAYER_Y_TURN:
+            stage = GameStage.PLAYER_X_TURN
+        elif review_tableau(tableau) is not None:
+            stage = GameStage.GAME_OVER
     return tableau
 
 
