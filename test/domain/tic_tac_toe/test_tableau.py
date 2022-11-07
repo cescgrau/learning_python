@@ -1,6 +1,6 @@
 import unittest
 
-from test.domain.tic_tac_toe.test_tic_tac_toe import Tableau
+from domain.tic_tac_toe.tic_tac_toe_tools import Tableau
 
 
 class MyTableauTest(unittest.TestCase):
