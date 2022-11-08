@@ -55,7 +55,7 @@ class TestTicTacToeEvolution(unittest.TestCase):
 
         tableau1 = Tableau([[None]])
         tableau1.contents
-        tableau2 = Tableau([[X]])
+        tableau2 = Tableau([["X"]])
         player_x = "player_x"
         player_y = "player_y"
         game = TicTacToeGame(tableau)
