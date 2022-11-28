@@ -1,45 +1,7 @@
 import unittest
-from enum import Enum
 
+from domain.tic_tac_toe.tic_tac_toe_evolution import GameStage, TicTacToeGame, GamePlayers
 from domain.tic_tac_toe.tic_tac_toe_tools import Tableau
-
-
-class GameStage(Enum):
-    WIP = 1
-    OVER = 2
-
-
-class TicTacToeGame:
-
-    def __init__(self, tableau: Tableau):
-        self.tableau = tableau
-
-    def get_tableau(self):
-        return self.tableau
-
-    def shot(self, player, row, column):
-        if player == "player_x":
-            if self.tableau[row, column] is None:
-                self.tableau[row, column] = "X"
-        if player == "player_y":
-            if self.tableau[row, column] is None:
-                self.tableau[row, column] = "Y"
-
-    def winner(self):
-        if self.tableau.who_is_the_winner() == "X":
-            return "player_x"
-        elif self.tableau.who_is_the_winner() == "Y":
-            return "player_y"
-        elif self.tableau.who_is_the_winner() is None:
-            return None
-
-    def stage(self):
-        if self.tableau.is_full():
-            return GameStage.OVER
-        elif self.tableau.who_is_the_winner() is not None:
-            return GameStage.OVER
-        else:
-            return GameStage.WIP
 
 
 class TestTicTacToeEvolution(unittest.TestCase):
@@ -52,7 +14,6 @@ class TestTicTacToeEvolution(unittest.TestCase):
 
     def test_from_empty_tableau_to_end_game(self):
         tableau = Tableau()
-
         tableau1 = Tableau([[None]])
         tableau1.contents
         tableau2 = Tableau([["X"]])
@@ -87,6 +48,12 @@ class TestTicTacToeEvolution(unittest.TestCase):
         self.assertEqual(None, game.winner())
         self.assertEqual(GameStage.OVER, game.stage())
 
+    def test_from_empty_tableau_the_player_x_cant_run_two_consecutive_shots(self):
+        tableau = Tableau()
+        player_x = "player_x"
+        game = TicTacToeGame(tableau)
+        game.shot(player=player_x, row=1, column=1)
+        self.assertEqual(GamePlayers.PLAYER_Y, game.shot(player=player_x, row=1, column=1))
 
         if __name__ == '__main__':
             unittest.main()

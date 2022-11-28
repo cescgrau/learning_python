@@ -5,10 +5,10 @@ name = "pypi"
 
 [packages]
 coverage = "*"
-parameterized = "*"
 
 
 [dev-packages]
+parameterized = "*"
 
 [requires]
 python_version = "3.9"
