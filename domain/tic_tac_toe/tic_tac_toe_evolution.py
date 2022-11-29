@@ -16,11 +16,8 @@ class GamePlayers(Enum):
 class TicTacToeGame:
 
     def __init__(self, tableau: Tableau):
-        self.next_player = None
         self.tableau = tableau
 
-    def next_player(self):
-        self.next_player()
 
     def get_tableau(self):
         return self.tableau
@@ -29,11 +26,11 @@ class TicTacToeGame:
         if player == "player_x":
             if self.tableau[row, column] is None:
                 self.tableau[row, column] = "X"
-                self.next_player = GamePlayers.PLAYER_Y
+                return GamePlayers.PLAYER_Y
         if player == "player_y":
             if self.tableau[row, column] is None:
                 self.tableau[row, column] = "Y"
-                self.next_player = GamePlayers.PLAYER_X
+                return GamePlayers.PLAYER_X
 
     def winner(self):
         if self.tableau.who_is_the_winner() == "X":

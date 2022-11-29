@@ -52,8 +52,12 @@ class TestTicTacToeEvolution(unittest.TestCase):
         tableau = Tableau()
         player_x = "player_x"
         game = TicTacToeGame(tableau)
-        game.shot(player=player_x, row=1, column=1)
-        self.assertEqual(GamePlayers.PLAYER_Y, game.shot(player=player_x, row=1, column=1))
+        self.assertEqual(GamePlayers.PLAYER_Y, game.shot(player_x, row=1, column=1))
 
-        if __name__ == '__main__':
-            unittest.main()
+    def test_from_empty_tableau_the_player_y_cant_run_two_consecutive_shots(self):
+        tableau = Tableau()
+        player_y = "player_y"
+        game = TicTacToeGame(tableau)
+        self.assertEqual(GamePlayers.PLAYER_X, game.shot(player_y, row=1, column=1))
+    if __name__ == '__main__':
+        unittest.main()
