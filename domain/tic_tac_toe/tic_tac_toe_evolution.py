@@ -17,30 +17,37 @@ class TicTacToeGame:
 
     def __init__(self, tableau: Tableau):
         self.tableau = tableau
-
+        self.stage = GameStage.WIP
+        self.next_player = GamePlayers.PLAYER_X
 
     def get_tableau(self):
         return self.tableau
 
-    def shot(self, player: str, row, column):
-        if player == "player_x":
+    def shot(self, player: GamePlayers, row, column):
+        if self.stage != GameStage.WIP:
+            raise RuntimeError()
+        if self.next_player != player:
+            raise RuntimeError()
+        if player == GamePlayers.PLAYER_X:
             if self.tableau[row, column] is None:
                 self.tableau[row, column] = "X"
-                return GamePlayers.PLAYER_Y
-        if player == "player_y":
+                self.next_player = GamePlayers.PLAYER_Y
+        if player == GamePlayers.PLAYER_Y:
             if self.tableau[row, column] is None:
                 self.tableau[row, column] = "Y"
-                return GamePlayers.PLAYER_X
+                self.next_player = GamePlayers.PLAYER_X
+        self.stage = self.calculate_stage()
+        return self.next_player
 
     def winner(self):
         if self.tableau.who_is_the_winner() == "X":
-            return "player_x"
+            return GamePlayers.PLAYER_X
         elif self.tableau.who_is_the_winner() == "Y":
-            return "player_y"
+            return GamePlayers.PLAYER_Y
         elif self.tableau.who_is_the_winner() is None:
             return None
 
-    def stage(self):
+    def calculate_stage(self):
         if self.tableau.is_full():
             return GameStage.OVER
         elif self.tableau.who_is_the_winner() is not None:
